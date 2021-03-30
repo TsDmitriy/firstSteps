@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,10 +12,7 @@ public class Helpers {
      * @param text текст для ввода
      */
     public static void sendKeys(By by, String text) {
-        new WebDriverWait(Driver.getInstance(), 15)
-                .withMessage("Элемент"+by+"не виден в DOM")
-                .until(ExpectedConditions.presenceOfElementLocated(by))
-                .sendKeys(text);
+        presenceOfElementLocated(by).sendKeys(text);
     }
 
     /**
@@ -26,6 +24,18 @@ public class Helpers {
                 .withMessage("Элемент"+by+"некликабелен")
                 .until(ExpectedConditions.elementToBeClickable(by))
                 .click();
+    }
+
+    /**
+     * Метод проверет виден ли элемент в дом, если виден возвращает элемент
+     * @param by путь до элемента в DOM
+     * @return найденный WebElement
+     */
+    public static WebElement presenceOfElementLocated(By by) {
+        new WebDriverWait(Driver.getInstance(), 15)
+                .withMessage("Элемент"+by+"не виден в DOM")
+                .until(ExpectedConditions.presenceOfElementLocated(by));
+       return Driver.getInstance().findElement(by);
     }
 }
 

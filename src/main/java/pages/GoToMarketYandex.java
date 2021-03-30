@@ -1,15 +1,16 @@
 package pages;
 
-import java.util.PrimitiveIterator;
+import org.openqa.selenium.By;
 
 public class GoToMarketYandex {
 
     private String url = "https://market.yandex.ru/";
-    private String logoPartMarket = "//*[@id=\"logoPartMarket\"]";
+    private By logoPartMarket = By.xpath("//*[@id=\"logoPartMarket\"]");
 
 
-    public YandexPage getpage() {
+    public YandexTvPage getpage() {
         Driver.getInstance().get(url);
-        return new YandexPage();
+        Helpers.presenceOfElementLocated(logoPartMarket);
+        return new YandexTvPage();
     }
 }

@@ -3,7 +3,7 @@ package tests;
 import pages.Driver;
 import pages.GoToMarketYandex;
 import org.junit.*;
-import pages.YandexPage;
+import pages.YandexTvPage;
 
 
 public class GoToMarketYandexTest {
@@ -16,7 +16,7 @@ public class GoToMarketYandexTest {
 
     @Test
     public void test() {
-        new YandexPage()
+        new YandexTvPage()
                 .searchTV();
     }
 
